@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys,getopt,datetime,codecs
+import follower as fp
 if sys.version_info[0] < 3:
 	print("first")
 	import got
@@ -66,6 +67,19 @@ def main(argv):
 
 		def receiveBuffer(tweets):
 			for t in tweets:
+				
+				# Username of the current tweet user
+				username = t.permalink[20:].split("/")[0]
+
+				# Count is a list contaning the friends and followers count respectively
+				count = fp.tweet_count(username)
+
+				# likes = t.favorites and retweets = t.retweets
+
+				# If count and likes and retweet count is greater than a threshold we consider it
+
+				# Add the username to the list Users to get the follower and friend ids of the user from follower.py
+
 				outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
 			outputFile.flush()
 			print('More %d saved on file...\n' % len(tweets))
