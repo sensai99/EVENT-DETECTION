@@ -24,5 +24,4 @@ def user_info(username):
 
 def tweet_count(username) :
 	user = api.get_user(username)
-	count = [user.friends_count, user.followers_count]
-	return count
+	return user.followers_count

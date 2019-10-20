@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys,getopt,datetime,codecs
 import follower as fp
+from langdetect import detect
 if sys.version_info[0] < 3:
 	print("first")
 	import got
@@ -69,18 +70,29 @@ def main(argv):
 			for t in tweets:
 				
 				# Username of the current tweet user
-				username = t.permalink[20:].split("/")[0]
+				# username = t.permalink[20:].split("/")[0]
 
 				# Count is a list contaning the friends and followers count respectively
-				count = fp.tweet_count(username)
+				# followers_count = fp.tweet_count(username)
 
+				# print("out")
 				# likes = t.favorites and retweets = t.retweets
 
 				# If count and likes and retweet count is greater than a threshold we consider it
 
-				# Add the username to the list Users to get the follower and friend ids of the user from follower.py
+				print(t.retweets)
+				print(t.favorites)
+				try:
+					x = detect(t.text)
+				except:
+					continue
+				if (x == 'en') :
+					if (t.retweets > 10 and t.favorites > 20 ) :
+						print("int")
+						outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
 
-				outputFile.write(('\n%s;%s;%d;%d;"%s";%s;%s;%s;"%s";%s' % (t.username, t.date.strftime("%Y-%m-%d %H:%M"), t.retweets, t.favorites, t.text, t.geo, t.mentions, t.hashtags, t.id, t.permalink)))
+				# Add the username to the list Users to get the follower and friend ids of the user from follower.py
+		
 			outputFile.flush()
 			print('More %d saved on file...\n' % len(tweets))
 
