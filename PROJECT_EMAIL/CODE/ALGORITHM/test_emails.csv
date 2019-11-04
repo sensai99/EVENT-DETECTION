@@ -1,0 +1,13 @@
+place,1,meet,2,19-06-2019
+meet,1,canteen,1,19-06-2019
+time,1,canteen,2,19-06-2019
+movie,2,show,1,19-06-2019
+show,2,place,1,19-06-2019
+meet,1,show,1,place,1,movie,2,19-06-2019
+sports,1,football,2,19-06-2019
+games,2,cricket,1,football,1,19-06-2019
+dhoni,2,sports,1,19-06-2019
+alaska,2,venizuela,2,19-06-2019
+venizuela,2,india,1,yemen,1,19-06-2019
+yemen,1,america,4,19-06-2019
+india,1,america,1,19-06-2019
