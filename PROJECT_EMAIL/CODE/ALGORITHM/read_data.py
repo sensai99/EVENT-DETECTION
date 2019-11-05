@@ -1,13 +1,18 @@
 import numpy as np
 import csv
-# import sort_timestamps as srt
+import pandas as pd
+import sort_timestamps as srt
 
-# emails_order, time = srt.main()
+emails_order, time = srt.main()
+print(len(emails_order))
 
 def read_words(path):
 	data = {}
 	with open(path,"r") as file :
 		reader = csv.reader(file, delimiter = "\n")
+		# lines = list(reader)
+		# for i in emails_order:
+		# 	line = lines[i]
 		for i, line in enumerate(reader) :
 			data['words'] = []
 			data['word_frequencies'] = []
@@ -26,6 +31,9 @@ def read_nodes(path):
 	data = {}
 	with open(path,"r") as file :
 		reader = csv.reader(file, delimiter = "\n")
+		# lines = list(reader)
+		# for i in emails_order:
+		# 	line = lines[i]
 		for i, line in enumerate(reader) :
 			data['nodes'] = []
 			l = line[0].split(',')
