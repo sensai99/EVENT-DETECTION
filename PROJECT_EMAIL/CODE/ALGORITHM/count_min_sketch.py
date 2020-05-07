@@ -4,7 +4,7 @@ import mmh3
 class CountMinSketch(object):
     ''' Class for a CountMinSketch data structure
     '''
-    def __init__(self, width, width, seeds):
+    def __init__(self, width, length, seeds):
         ''' 
         This method initializes the data structure
         @param width int: Width of the table 	(Number of Hash Functions)
